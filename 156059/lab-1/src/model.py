@@ -131,7 +131,11 @@ class BloodClassifier(pl.LightningModule):
         class_weights: Tensor | Sequence[float] | None = None,
     ) -> None:
         super().__init__()
+        serializable_weights = (
+            [float(w) for w in class_weights] if class_weights is not None else None
+        )
         self.save_hyperparameters(ignore=["class_weights"])
+        self.hparams["class_weights"] = serializable_weights
 
         self.net = BloodNet(
             in_channels=in_channels,
@@ -146,10 +150,10 @@ class BloodClassifier(pl.LightningModule):
             else:
                 weight_tensor = class_weights.detach().clone().float()
             self.register_buffer("class_weights", weight_tensor)
-            self.loss_fn = nn.CrossEntropyLoss(weight=self.class_weights)
         else:
-            self.class_weights: Tensor | None = None
-            self.loss_fn = nn.CrossEntropyLoss()
+            self.register_buffer("class_weights", None)
+
+        self.loss_fn = nn.CrossEntropyLoss(weight=self.class_weights)
             
         self.train_f1 = MulticlassF1Score(num_classes=num_classes, average="macro")
         self.train_acc = MulticlassAccuracy(num_classes=num_classes)
