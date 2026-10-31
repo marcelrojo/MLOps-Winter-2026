@@ -21,8 +21,12 @@ mlruns/
 *.db
 
 # Large Datasets & Binary Tensors
-data/
+data/*
+!data/README.md
+!data/*.py
+!data/*.png
 datasets/
+*.npz
 *.parquet
 *.h5
 *.pt
