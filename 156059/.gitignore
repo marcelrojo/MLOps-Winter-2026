@@ -38,3 +38,7 @@ datasets/
 .idea/
 .vscode/
 *.swp
+
+# Temporary & Local Scratch
+.tmp/
+*/.tmp/
