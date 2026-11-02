@@ -121,6 +121,7 @@ class BloodDataModule(pl.LightningDataModule):
         batch_size: int = 64,
         val_batch_size: int | None = None,
         use_augmentations: bool = True,
+        augmentation_type: str | None = None,
         grayscale: bool = False,
         num_workers: int = 0,
         pin_memory: bool = True,
@@ -131,6 +132,10 @@ class BloodDataModule(pl.LightningDataModule):
         self.batch_size = batch_size
         self.val_batch_size = val_batch_size if val_batch_size is not None else batch_size
         self.use_augmentations = use_augmentations
+        if augmentation_type is not None:
+            self.augmentation_type = augmentation_type.lower()
+        else:
+            self.augmentation_type = "full" if use_augmentations else "none"
         self.grayscale = grayscale
         self.num_workers = num_workers
         self.pin_memory = pin_memory and torch.cuda.is_available()
@@ -195,8 +200,15 @@ class BloodDataModule(pl.LightningDataModule):
         """Construct augmentation and normalization transforms."""
         normalizer = transforms.Normalize(mean=list(train_mean), std=list(train_std))
 
-        if not self.use_augmentations:
+        if self.augmentation_type == "none":
             return None, normalizer
+
+        if self.augmentation_type == "flips_only":
+            train_transform = transforms.Compose([
+                transforms.RandomHorizontalFlip(p=0.5),
+                transforms.RandomVerticalFlip(p=0.5),
+            ])
+            return train_transform, normalizer
 
         aug_list: list[torch.nn.Module] = [
             transforms.RandomHorizontalFlip(p=0.5),
@@ -204,7 +216,6 @@ class BloodDataModule(pl.LightningDataModule):
             transforms.RandomRotation(degrees=15),
         ]
 
-        # Subtle color jitter only makes sense for RGB images
         if not self.grayscale:
             aug_list.append(transforms.ColorJitter(brightness=0.1, contrast=0.1))
 
