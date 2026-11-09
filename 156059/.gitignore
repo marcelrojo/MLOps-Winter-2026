@@ -1,0 +1,44 @@
+# Python & Virtual Environments
+.venv/
+env/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# PyTorch Lightning & Checkpoints
+checkpoints/
+lightning_logs/
+*.ckpt
+
+# Experiment Tracking local caches
+wandb/
+mlruns/
+*.sqlite3
+*.db
+
+# Large Datasets & Binary Tensors
+data/*
+!data/README.md
+!data/*.py
+!data/*.png
+datasets/
+*.npz
+*.parquet
+*.h5
+*.pt
+*.pth
+
+# Jupyter & Editor files
+.ipynb_checkpoints/
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Temporary & Local Scratch
+.tmp/
+*/.tmp/
