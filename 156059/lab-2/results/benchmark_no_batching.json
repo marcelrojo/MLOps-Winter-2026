@@ -1,0 +1,211 @@
+{
+  "timestamp_utc": "2026-11-19T17:15:21.609259+00:00",
+  "url": "http://127.0.0.1:3000",
+  "mode": "no_batching",
+  "service_info": {
+    "service": "bloodmnist_classifier",
+    "device": "NVIDIA GeForce RTX 3050 Laptop GPU",
+    "source_checkpoint": "best-hpo-epoch=epoch=17-val_f1_macro=val_f1_macro=0.9613.ckpt",
+    "batching_enabled": false,
+    "max_batch_size": 32,
+    "max_latency_ms": 1000,
+    "num_classes": 8,
+    "class_names": [
+      "Basophil",
+      "Eosinophil",
+      "Erythroblast",
+      "Immature Granulocyte",
+      "Lymphocyte",
+      "Monocyte",
+      "Neutrophil",
+      "Platelet"
+    ]
+  },
+  "methodology": {
+    "sample_index": 0,
+    "concurrencies": [
+      1,
+      8,
+      32
+    ],
+    "warmup_s": 15.0,
+    "duration_s": 60.0,
+    "repeats": 3
+  },
+  "results": {
+    "1": {
+      "concurrency": 1,
+      "summary": {
+        "repeats": 3,
+        "total_successes": 19961,
+        "total_errors": 0,
+        "throughput_samples_per_s_mean": 110.88502487734372,
+        "throughput_samples_per_s_std": 0.19266646371938373,
+        "mean_ms_mean": 9.01675793631541,
+        "mean_ms_std": 0.01562544502414443,
+        "p50_ms_mean": 8.60489266718408,
+        "p50_ms_std": 0.03187983318901649,
+        "p95_ms_mean": 11.046247432386734,
+        "p95_ms_std": 0.10979801882411405,
+        "p99_ms_mean": 12.776845886643665,
+        "p99_ms_std": 0.35866463597912357,
+        "avg_batch_size_mean": 1.0,
+        "avg_batch_size_std": 0.0
+      },
+      "trials": [
+        {
+          "elapsed_s": 60.0066,
+          "successes": 6659,
+          "errors": 0,
+          "throughput_samples_per_s": 110.97115010853456,
+          "mean_ms": 9.009852840080887,
+          "p50_ms": 8.637557002657559,
+          "p95_ms": 11.092483398897453,
+          "p99_ms": 12.67507090051368,
+          "avg_batch_size": 1.0,
+          "batch_calls": 0
+        },
+        {
+          "elapsed_s": 60.0013,
+          "successes": 6640,
+          "errors": 0,
+          "throughput_samples_per_s": 110.66431879956528,
+          "mean_ms": 9.034646351801712,
+          "p50_ms": 8.573860000979039,
+          "p95_ms": 11.125365849147782,
+          "p99_ms": 13.175399469873803,
+          "avg_batch_size": 1.0,
+          "batch_calls": 0
+        },
+        {
+          "elapsed_s": 60.0074,
+          "successes": 6662,
+          "errors": 0,
+          "throughput_samples_per_s": 111.01960572393136,
+          "mean_ms": 9.00577461706363,
+          "p50_ms": 8.60326099791564,
+          "p95_ms": 10.920893049114964,
+          "p99_ms": 12.480067289543515,
+          "avg_batch_size": 1.0,
+          "batch_calls": 0
+        }
+      ]
+    },
+    "8": {
+      "concurrency": 8,
+      "summary": {
+        "repeats": 3,
+        "total_successes": 23710,
+        "total_errors": 0,
+        "throughput_samples_per_s_mean": 131.66078699180488,
+        "throughput_samples_per_s_std": 5.9654599783977185,
+        "mean_ms_mean": 60.82577353342606,
+        "mean_ms_std": 2.830072428250085,
+        "p50_ms_mean": 39.95226066642014,
+        "p50_ms_std": 0.4492197305708151,
+        "p95_ms_mean": 68.98967003259402,
+        "p95_ms_std": 12.459342463844274,
+        "p99_ms_mean": 558.2002107432608,
+        "p99_ms_std": 142.63519585135987,
+        "avg_batch_size_mean": 1.0,
+        "avg_batch_size_std": 0.0
+      },
+      "trials": [
+        {
+          "elapsed_s": 60.0221,
+          "successes": 8108,
+          "errors": 0,
+          "throughput_samples_per_s": 135.08359693304706,
+          "mean_ms": 59.203451113941064,
+          "p50_ms": 40.39026349892083,
+          "p95_ms": 60.72642314811666,
+          "p99_ms": 529.8541119594723,
+          "avg_batch_size": 1.0,
+          "batch_calls": 0
+        },
+        {
+          "elapsed_s": 60.0292,
+          "successes": 7490,
+          "errors": 0,
+          "throughput_samples_per_s": 124.77251116771787,
+          "mean_ms": 64.09363220613965,
+          "p50_ms": 39.97391150005569,
+          "p95_ms": 83.32052275090962,
+          "p99_ms": 712.880103770476,
+          "avg_batch_size": 1.0,
+          "batch_calls": 0
+        },
+        {
+          "elapsed_s": 60.0327,
+          "successes": 8112,
+          "errors": 0,
+          "throughput_samples_per_s": 135.12625287464977,
+          "mean_ms": 59.18023728019746,
+          "p50_ms": 39.4926070002839,
+          "p95_ms": 62.92206419875578,
+          "p99_ms": 431.8664164998338,
+          "avg_batch_size": 1.0,
+          "batch_calls": 0
+        }
+      ]
+    },
+    "32": {
+      "concurrency": 32,
+      "summary": {
+        "repeats": 3,
+        "total_successes": 14462,
+        "total_errors": 0,
+        "throughput_samples_per_s_mean": 80.01012107213926,
+        "throughput_samples_per_s_std": 1.038653402941082,
+        "mean_ms_mean": 399.0656284232081,
+        "mean_ms_std": 5.155377295468628,
+        "p50_ms_mean": 269.20768433289294,
+        "p50_ms_std": 2.42842771974038,
+        "p95_ms_mean": 1168.235821483783,
+        "p95_ms_std": 12.598822700923181,
+        "p99_ms_mean": 1786.5343332092623,
+        "p99_ms_std": 15.273136351665418,
+        "avg_batch_size_mean": 1.0,
+        "avg_batch_size_std": 0.0
+      },
+      "trials": [
+        {
+          "elapsed_s": 60.269,
+          "successes": 4755,
+          "errors": 0,
+          "throughput_samples_per_s": 78.89627353464317,
+          "mean_ms": 404.63329445910466,
+          "p50_ms": 270.73006099817576,
+          "p95_ms": 1164.7561780002434,
+          "p99_ms": 1796.969235060315,
+          "avg_batch_size": 1.0,
+          "batch_calls": 0
+        },
+        {
+          "elapsed_s": 60.2629,
+          "successes": 4832,
+          "errors": 0,
+          "throughput_samples_per_s": 80.18193623432087,
+          "mean_ms": 398.10627786425357,
+          "p50_ms": 270.48586800083285,
+          "p95_ms": 1182.2087701508278,
+          "p99_ms": 1769.0041526296043,
+          "avg_batch_size": 1.0,
+          "batch_calls": 0
+        },
+        {
+          "elapsed_s": 60.2208,
+          "successes": 4875,
+          "errors": 0,
+          "throughput_samples_per_s": 80.95215344745371,
+          "mean_ms": 394.457312946266,
+          "p50_ms": 266.40712399967015,
+          "p95_ms": 1157.7425163002774,
+          "p99_ms": 1793.629611937868,
+          "avg_batch_size": 1.0,
+          "batch_calls": 0
+        }
+      ]
+    }
+  }
+}
